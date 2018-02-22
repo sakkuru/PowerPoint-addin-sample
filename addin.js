@@ -4,6 +4,7 @@ const log = text => {
     $("#log").append("<p>" + text);
 };
 (function() {
+    log("initialize");
     Office.initialize = reason => {
         log(reason);
         const currentView = getActiveFileView();
