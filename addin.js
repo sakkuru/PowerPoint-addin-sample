@@ -3,9 +3,7 @@
 (function() {
     const $log = $("#log");
     Office.initialize = reason => {
-
         const currentView = getActiveFileView();
-
         registerActiveViewChanged();
         $(document).ready(() => {
             $('#insert-image').click(insertImage);
