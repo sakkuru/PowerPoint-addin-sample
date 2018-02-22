@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    $log = $("#log");
+    const $log = $("#log");
     Office.initialize = reason => {
 
         const currentView = getActiveFileView();
@@ -14,14 +14,14 @@
     }
 
 
-    function registerActiveViewChanged() {
+    const registerActiveViewChanged = () => {
         $log.append("registerActiveViewChanged");
         Globals.activeViewHandler = function(args) {
             app.showNotification(JSON.stringify(args));
         }
 
         Office.context.document.addHandlerAsync(Office.EventType.ActiveViewChanged, Globals.activeViewHandler,
-            function(asyncResult) {
+            asyncResult => {
                 if (asyncResult.status == "failed") {
                     app.showNotification("Action failed with error: " + asyncResult.error.message);
                 } else {
@@ -30,8 +30,8 @@
             });
     }
 
-    function getActiveFileView() {
-        Office.context.document.getActiveViewAsync(function(asyncResult) {
+    const getActiveFileView = () => {
+        Office.context.document.getActiveViewAsync(asyncResult => {
             if (asyncResult.status == "failed") {
                 app.showNotification("Action failed with error: " + asyncResult.error.message);
             } else {
