@@ -14,7 +14,8 @@ const $log = $("#log");
 
     const registerActiveViewChanged = () => {
         $log.append("registerActiveViewChanged");
-        Globals.activeViewHandler = function(args) {
+        Globals.activeViewHandler = args => {
+            $log.append(args);
             app.showNotification(JSON.stringify(args));
         }
 
@@ -29,6 +30,7 @@ const $log = $("#log");
     }
 
     const getActiveFileView = () => {
+        $log.append("getActiveFileView");
         Office.context.document.getActiveViewAsync(asyncResult => {
             if (asyncResult.status == "failed") {
                 app.showNotification("Action failed with error: " + asyncResult.error.message);
