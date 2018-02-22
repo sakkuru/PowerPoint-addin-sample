@@ -4,7 +4,7 @@
     $log = $("#log");
     Office.initialize = reason => {
 
-        var currentView = getActiveFileView();
+        const currentView = getActiveFileView();
 
         registerActiveViewChanged();
         $(document).ready(() => {
@@ -15,6 +15,7 @@
 
 
     function registerActiveViewChanged() {
+        $log.append("registerActiveViewChanged");
         Globals.activeViewHandler = function(args) {
             app.showNotification(JSON.stringify(args));
         }
