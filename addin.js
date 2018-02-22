@@ -1,7 +1,7 @@
 'use strict';
 
+const $log = $("#log");
 (function() {
-    const $log = $("#log");
     Office.initialize = reason => {
         const currentView = getActiveFileView();
         registerActiveViewChanged();
