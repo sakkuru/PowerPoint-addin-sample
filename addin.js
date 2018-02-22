@@ -1,7 +1,7 @@
 'use strict';
 
 const $log = $("#log");
-$log.add = text => {
+$log.append = text => {
     $log.append("<p>" + text);
 };
 (function() {
@@ -16,13 +16,13 @@ $log.add = text => {
 
 
     const registerActiveViewChanged = () => {
-        $log.add("registerActiveViewChanged");
+        $log.append("registerActiveViewChanged");
         Globals.activeViewHandler = args => {
             $log.append(args);
             app.showNotification(JSON.stringify(args));
         }
 
-        Office.context.document.addHandlerAsync(Office.EventType.ActiveViewChanged, Globals.activeViewHandler,
+        Office.context.document.appendHandlerAsync(Office.EventType.ActiveViewChanged, Globals.activeViewHandler,
             asyncResult => {
                 if (asyncResult.status == "failed") {
                     app.showNotification("Action failed with error: " + asyncResult.error.message);
@@ -33,7 +33,7 @@ $log.add = text => {
     }
 
     const getActiveFileView = () => {
-        $log.add("getActiveFileView");
+        $log.append("getActiveFileView");
         Office.context.document.getActiveViewAsync(asyncResult => {
             if (asyncResult.status == "failed") {
                 app.showNotification("Action failed with error: " + asyncResult.error.message);
@@ -45,7 +45,7 @@ $log.add = text => {
     }
 
     const insertImage = () => {
-        $log.add('insertImage');
+        $log.append('insertImage');
         Office.context.document.setSelectedDataAsync(getImageAsBase64String(), {
                 coercionType: Office.CoercionType.Image,
                 imageLeft: 50,
@@ -60,7 +60,7 @@ $log.add = text => {
     }
 
     const insertText = () => {
-        $log.add('insertText');
+        $log.append('insertText');
         Office.context.document.setSelectedDataAsync("Hello World!",
             asyncResult => {
                 if (asyncResult.status === Office.AsyncResultStatus.Failed) {
