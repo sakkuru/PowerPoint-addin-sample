@@ -2,7 +2,7 @@
 
 const $log = $("#log");
 $log.add = text => {
-    $log.add("<p>" + text);
+    $log.append("<p>" + text);
 };
 (function() {
     Office.initialize = reason => {
