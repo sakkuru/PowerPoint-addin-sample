@@ -1,11 +1,12 @@
 'use strict';
 
 const $log = $("#log");
-$log.append = text => {
-    $log.append("<p>" + text);
+$log.add = text => {
+    $log.add("<p>" + text);
 };
 (function() {
     Office.initialize = reason => {
+        $log.add(reason);
         const currentView = getActiveFileView();
         registerActiveViewChanged();
         $(document).ready(() => {
@@ -16,13 +17,13 @@ $log.append = text => {
 
 
     const registerActiveViewChanged = () => {
-        $log.append("registerActiveViewChanged");
+        $log.add("registerActiveViewChanged");
         Globals.activeViewHandler = args => {
-            $log.append(args);
+            $log.add(args);
             app.showNotification(JSON.stringify(args));
         }
 
-        Office.context.document.appendHandlerAsync(Office.EventType.ActiveViewChanged, Globals.activeViewHandler,
+        Office.context.document.addHandlerAsync(Office.EventType.ActiveViewChanged, Globals.activeViewHandler,
             asyncResult => {
                 if (asyncResult.status == "failed") {
                     app.showNotification("Action failed with error: " + asyncResult.error.message);
@@ -33,7 +34,7 @@ $log.append = text => {
     }
 
     const getActiveFileView = () => {
-        $log.append("getActiveFileView");
+        $log.add("getActiveFileView");
         Office.context.document.getActiveViewAsync(asyncResult => {
             if (asyncResult.status == "failed") {
                 app.showNotification("Action failed with error: " + asyncResult.error.message);
@@ -45,7 +46,7 @@ $log.append = text => {
     }
 
     const insertImage = () => {
-        $log.append('insertImage');
+        $log.add('insertImage');
         Office.context.document.setSelectedDataAsync(getImageAsBase64String(), {
                 coercionType: Office.CoercionType.Image,
                 imageLeft: 50,
@@ -60,11 +61,11 @@ $log.append = text => {
     }
 
     const insertText = () => {
-        $log.append('insertText');
+        $log.add('insertText');
         Office.context.document.setSelectedDataAsync("Hello World!",
             asyncResult => {
                 if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                    $log.append(asyncResult.error.message);
+                    $log.add(asyncResult.error.message);
                 }
             });
     }
