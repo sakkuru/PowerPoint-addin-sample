@@ -14,13 +14,14 @@
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script>
 
     <!-- LOCAL -->
-    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.min.css" />
-    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.components.css" />
+    {#
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.min.css" /> #} {#
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.components.css" /> #}
 
     <!-- CDN -->
     <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
-    <!--<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />-->
-    <!--<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />-->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />
 
     <!-- Template styles -->
     <link href="app.css" rel="stylesheet" type="text/css" />
@@ -29,7 +30,7 @@
 <body class="ms-font-m ms-welcome">
     <div id="content-header">
         <div class="padding">
-            <h1>Welcome</h1>
+            <h1>Add-In Sample</h1>
         </div>
     </div>
     <div id="content-main">
@@ -43,9 +44,9 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="node_modules/core-js/client/core.js"></script>
-    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="node_modules/office-ui-fabric-js/dist/js/fabric.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/core.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/office-ui-fabric-js/dist/js/fabric.js"></script>
 
     <script type="text/javascript" src="addin.js"></script>
 </body>
